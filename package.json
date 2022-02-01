@@ -1,0 +1,23 @@
+{
+  "name": "single-spa",
+  "version": "1.0.0",
+  "description": "Study and implementation of microfrontend using SingleSPA and Angular",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philipibovo/single-spa-demo.git"
+  },
+  "keywords": [
+    "Single-SPA",
+    "Micro-frontend",
+    "Microfrontend"
+  ],
+  "author": "Philipi Bovo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philipibovo/single-spa-demo/issues"
+  },
+  "homepage": "https://github.com/philipibovo/single-spa-demo#readme"
+}
