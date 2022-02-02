@@ -41,18 +41,51 @@
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
-  <% if (isLocal) { %>
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@bovo/root-config": "//localhost:9000/bovo-root-config.js",
-        "@bovo/app-menu": "//localhost:4200/main.js",
-        "@bovo/app-registers": "//localhost:4201/main.js",
-        "@bovo/app-reports": "//localhost:4202/main.js"
+  <% switch (env) { case `local`: %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@bovo/root-config": "//localhost:9000/bovo-root-config.js",
+          "@bovo/app-menu": "//localhost:4200/main.js",
+          "@bovo/app-registers": "//localhost:4201/main.js",
+          "@bovo/app-reports": "//localhost:4202/main.js"
+        }
       }
-    }
-  </script>
-  <% } %>
+    </script>
+    <% break; case `quality`: %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@bovo/root-config": "https//philipi.bovo.me/singe-spa/quality/bovo-root-config.js",
+          "@bovo/app-menu": "https//philipi.bovo.me/singe-spa/quality/menu/main.js",
+          "@bovo/app-registers": "https//philipi.bovo.me/singe-spa/quality/registers/main.js",
+          "@bovo/app-reports": "https//philipi.bovo.me/singe-spa/quality/reports/main.js"
+        }
+      }
+    </script>
+    <% break; case `production`: %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@bovo/root-config": "https//philipi.bovo.me/singe-spa/production/bovo-root-config.js",
+          "@bovo/app-menu": "https//philipi.bovo.me/singe-spa/production/menu/main.js",
+          "@bovo/app-registers": "https//philipi.bovo.me/singe-spa/production/registers/main.js",
+          "@bovo/app-reports": "https//philipi.bovo.me/singe-spa/production/reports/main.js"
+        }
+      }
+    </script>
+    <% break; default: %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@bovo/root-config": "https//philipi.bovo.me/singe-spa/production/bovo-root-config.js",
+          "@bovo/app-menu": "https//philipi.bovo.me/singe-spa/menu/production/main.js",
+          "@bovo/app-registers": "https//philipi.bovo.me/singe-spa/production/registers/main.js",
+          "@bovo/app-reports": "https//philipi.bovo.me/singe-spa/production/reports/main.js"
+        }
+      }
+    </script>
+    <% break; } %>
 
   <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
@@ -61,13 +94,8 @@
   <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
-  <% if (isLocal) { %>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
-  <% } else { %>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
-  <% } %>
 
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
